@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using EDA_Gabriel_Peixoto.Applications;
+using EDA_Gabriel_Peixoto.Lista;
+
+IApplication application = new ApplicationList();
+
+application.Run();
