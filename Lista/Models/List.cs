@@ -7,7 +7,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
 {
     public class List
     {
-        private Ellement? head { get; set; }
+        private Ellement? head;
 
         public List()
         {
@@ -35,7 +35,28 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
 
         public void Remove(Ellement ellement)
         {
+            if (head != null)
+            {
+                if (head.Value == ellement.Value)
+                {
+                    head = head.Next;
+                }
+                else
+                {
+                    Ellement? ellementAux = head.Next;
+                    Ellement ellementAuxPrev = head;
 
+                    while (ellementAux != null)
+                    {
+                        if (ellement.Value == ellementAux.Value)
+                        {
+                            ellementAuxPrev.Next = ellementAux.Next;
+                        }
+                        ellementAuxPrev = ellementAux;
+                        ellementAux = ellementAux.Next;
+                    }
+                }
+            }
         }
 
         public void ConsolePrint()
