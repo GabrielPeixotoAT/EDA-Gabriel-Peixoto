@@ -17,7 +17,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
     {
         public T Value { get; set; }
         public INode<T>? Next { get; set; }
-
+        
         string ToString();
     }
 }
