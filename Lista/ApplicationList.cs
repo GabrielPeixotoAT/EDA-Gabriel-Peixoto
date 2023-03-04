@@ -7,7 +7,7 @@ namespace EDA_Gabriel_Peixoto.Lista
     {
         public void Run()
         {
-            List list = new List();
+            IList list = new List();
 
             list.Add(new Ellement("A"));
             list.Add(new Ellement("B"));

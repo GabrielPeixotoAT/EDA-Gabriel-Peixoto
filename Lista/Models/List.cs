@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EDA_Gabriel_Peixoto.Lista.Models
 {
-    public class List
+    public class List : IList
     {
         private Ellement? head;
 
@@ -73,7 +73,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
                 {
                     Console.Write(ellement.ToString());
                     ellement = ellement.Next;
-                } 
+                }
                 Console.WriteLine();
             }
         }
