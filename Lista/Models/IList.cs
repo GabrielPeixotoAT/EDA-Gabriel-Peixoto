@@ -7,8 +7,8 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
 {
     public interface IList
     {
-        void Add(Ellement ellement);
-        void Remove(Ellement ellement);
+        void Add(INode ellement);
+        void Remove(INode ellement);
         void ConsolePrint();
     }
 

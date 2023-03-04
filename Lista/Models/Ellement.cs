@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace EDA_Gabriel_Peixoto.Lista.Models
 {
-    public class Ellement
+    public class Ellement : INode
     {
         public string Value { get; set; }
-        public Ellement? Next { get; set; }
+        public INode? Next { get; set; }
 
         public Ellement(string value)
         {

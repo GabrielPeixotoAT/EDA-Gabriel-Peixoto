@@ -7,14 +7,14 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
 {
     public class List : IList
     {
-        private Ellement? head;
+        private INode? head;
 
         public List()
         {
             head = null;
         }
 
-        public void Add(Ellement ellement)
+        public void Add(INode ellement)
         {
             if (head == null)
             {
@@ -22,7 +22,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
             }
             else
             {
-                Ellement ellementAux = head;
+                INode ellementAux = head;
 
                 while (ellementAux.Next != null)
                 {
@@ -33,7 +33,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
             }
         }
 
-        public void Remove(Ellement ellement)
+        public void Remove(INode ellement)
         {
             if (head != null)
             {
@@ -43,8 +43,8 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
                 }
                 else
                 {
-                    Ellement? ellementAux = head.Next;
-                    Ellement ellementAuxPrev = head;
+                    INode? ellementAux = head.Next;
+                    INode ellementAuxPrev = head;
 
                     while (ellementAux != null)
                     {
@@ -67,7 +67,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
             }
             else
             {
-                Ellement? ellement = head;
+                INode? ellement = head;
 
                 while (ellement != null)
                 {
