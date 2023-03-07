@@ -1,7 +1,29 @@
 ﻿using EDA_Gabriel_Peixoto.Applications;
+using EDA_Gabriel_Peixoto.Applications.GUI;
 using EDA_Gabriel_Peixoto.Lista;
 using EDA_Gabriel_Peixoto.Pilha;
 
-IApplication application = new ApplicationStack();
+int index = 0;
+IApplication? application = null;
+IGUIFactory guiFactory = new SelectionMenu(new List<string> { "Stack", "List" }, 15);
 
-application.Run();
+ while (index != 2)
+ {
+    index = guiFactory.RenderMenu();
+    switch (index)
+    {
+        case 0:
+            application = new ApplicationStack();
+            break;
+        case 1:
+            application = new ApplicationList();
+            break;
+        default:
+            application = null;
+            break;
+    }
+
+    if (application != null)
+        application.Run();
+
+}   

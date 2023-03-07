@@ -31,6 +31,7 @@ namespace EDA_Gabriel_Peixoto.Lista
 
             list.ConsolePrint();
 
+            Console.ReadKey();
         }
 
         public void RunGeneric()
