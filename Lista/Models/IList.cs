@@ -7,9 +7,12 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
 {
     public interface IList
     {
+        public INode head { get; set; }
+
         void Add(INode ellement);
         void Remove(INode ellement);
         void ConsolePrint();
+        void ConsolePrintReverse(INode node);
     }
 
     public interface IList<T>

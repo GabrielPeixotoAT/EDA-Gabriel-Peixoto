@@ -7,7 +7,7 @@ namespace EDA_Gabriel_Peixoto.Lista
     {
         public void Run()
         {
-            RunGeneric();
+            //RunGeneric();
 
             IList list = new List();
 
@@ -19,17 +19,7 @@ namespace EDA_Gabriel_Peixoto.Lista
 
             list.ConsolePrint();
 
-            list.Remove(new Ellement("A"));
-
-            list.ConsolePrint();
-
-            list.Remove(new Ellement("E"));
-
-            list.ConsolePrint();
-
-            list.Remove(new Ellement("C"));
-
-            list.ConsolePrint();
+            list.ConsolePrintReverse(list.head);
 
             Console.ReadKey();
         }

@@ -7,7 +7,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
 {
     public class List : IList
     {
-        private INode? head;
+        public INode? head { get; set; }
 
         public List()
         {
@@ -56,6 +56,15 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
                         ellementAux = ellementAux.Next;
                     }
                 }
+            }
+        }
+
+        public void ConsolePrintReverse(INode? node)
+        {
+            if(node != null)
+            {
+                ConsolePrintReverse(node.Next);
+                Console.Write(node.Value);
             }
         }
 
