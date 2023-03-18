@@ -28,8 +28,47 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
                 {
                     ellementAux = ellementAux.Next;
                 }
-
+                ellement.Prev = ellementAux;
                 ellementAux.Next = ellement;
+            }
+        }
+
+        public void AddOrdered(INode ellement)
+        {
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            if (head == null)
+            {
+                head = ellement;
+            }
+            else if (comparer.Compare(ellement.ToString(), head.ToString()) < 0)
+            {
+                ellement.Next = head;
+                head.Prev = ellement;
+                head = ellement;
+            }
+            else
+            {
+                INode ellementAux = head;
+
+                while (ellementAux.Next != null &&
+                 comparer.Compare(ellement.ToString(), ellementAux.Next.ToString()) > 0)
+                {
+                    ellementAux = ellementAux.Next;
+                }
+
+                if (ellementAux.Next != null)
+                {
+                    ellement.Prev = ellementAux;
+                    ellement.Next = ellementAux.Next;
+                    ellementAux.Next.Prev = ellement;
+                    ellementAux.Next = ellement;
+                }
+                else
+                {
+                    ellement.Prev = ellementAux;
+                    ellementAux.Next = ellement;
+                }
             }
         }
 
@@ -59,13 +98,29 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
             }
         }
 
-        public void ConsolePrintReverse(INode? node)
+        public void ConsolePrintReverse()
         {
-            if(node != null)
+            if(head == null)
             {
-                ConsolePrintReverse(node.Next);
-                Console.Write(node.Value);
+                Console.Write("The List is Empty");
             }
+            else 
+            {
+                INode? ellement = head;
+
+                while(ellement.Next != null)
+                {
+                    ellement = ellement.Next;
+                }
+
+                
+                do {
+                    Console.Write(ellement.ToString());
+                    ellement = ellement.Prev;
+                } while(ellement != null);
+                
+            }
+
         }
 
         public void ConsolePrint()

@@ -10,9 +10,10 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
         public INode head { get; set; }
 
         void Add(INode ellement);
+        void AddOrdered(INode ellement);
         void Remove(INode ellement);
         void ConsolePrint();
-        void ConsolePrintReverse(INode node);
+        void ConsolePrintReverse();
     }
 
     public interface IList<T>

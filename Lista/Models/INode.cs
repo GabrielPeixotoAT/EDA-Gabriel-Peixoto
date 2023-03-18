@@ -9,6 +9,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
     {
         public string Value { get; set; }
         public INode? Next { get; set; }
+        public INode? Prev { get; set; }
 
         string ToString();
     }
