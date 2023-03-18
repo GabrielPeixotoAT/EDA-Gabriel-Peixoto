@@ -9,7 +9,7 @@ IGUIFactory guiFactory = new SelectionMenu(new List<string> { "Stack", "List" },
 
  while (index != 2)
  {
-    index = guiFactory.RenderMenu();
+    index = guiFactory.BuildMenu();
     switch (index)
     {
         case 0:

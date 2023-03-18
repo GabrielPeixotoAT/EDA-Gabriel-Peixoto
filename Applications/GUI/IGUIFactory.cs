@@ -2,7 +2,7 @@
 {
     internal interface IGUIFactory
     {
-        int RenderMenu();
+        int BuildMenu();
         void Header();
     }
 }

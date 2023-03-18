@@ -14,7 +14,7 @@ namespace EDA_Gabriel_Peixoto.Applications.GUI
             this.optionLength = optionLength;
         }
 
-        public int RenderMenu()
+        public int BuildMenu()
         {
             List<string> sb = new List<string>();
             int index = 0;
