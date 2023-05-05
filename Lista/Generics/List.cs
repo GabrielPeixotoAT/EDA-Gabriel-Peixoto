@@ -13,24 +13,17 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
 
         public void Add(T value)
         {
-            if (!IsEmpyt())
+            if (value != null)
             {
                 Ellement<T> ellement = new Ellement<T>(value);
 
-                if (head == null)
+                if (IsEmpyt())
                 {
                     head = ellement;
                 }
                 else
                 {
-                    Ellement<T> ellementAux = head;
-
-                    while (ellementAux.Next != null)
-                    {
-                        ellementAux = ellementAux.Next;
-                    }
-
-                    ellementAux.Next = ellement;
+                    AddEllementAtLastPosition(ellement);
                 }
             }
         }
@@ -39,28 +32,17 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
         {
             if(value != null)
             {
-                Ellement<T> ellement = new Ellement<T>(value);
-
                 if (!IsEmpyt())
                 {
-                    if (ellement.Equals(head.Value))
+                    Ellement<T>? ellement = Find(value) as Ellement<T>;
+
+                    if (IsTheLastEllement(ellement))
                     {
-                        head = head.Next;
+                        RemoveLast(ellement);
                     }
                     else
                     {
-                        Ellement<T>? ellementAux = head.Next;
-                        Ellement<T> ellementAuxPrev = head;
-
-                        while (ellementAux != null)
-                        {
-                            if (ellement.Value.Equals(ellementAux.Value))
-                            {
-                                ellementAuxPrev.Next = ellementAux.Next;
-                            }
-                            ellementAuxPrev = ellementAux;
-                            ellementAux = ellementAux.Next;
-                        }
+                        RemoveBetween(ellement);
                     }
                 }
             }
@@ -85,7 +67,60 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
             }
         }
 
-        Ellement<T>? GetLastIten()
+        public INode<T>? Find(T value)
+        {
+            if (IsEmpyt())
+            {
+                return null;
+            }
+            else
+            {
+                if (value.Equals(head.Value))
+                {
+                    return head;
+                }
+                else
+                {
+                    Ellement<T> ellementAux = head;
+
+                    while (ellementAux.Next != null)
+                    {
+                        if (ellementAux.Value.Equals(value))
+                            break;
+
+                        ellementAux = ellementAux.Next;
+                    }
+
+                    return ellementAux;
+                }
+            }
+        }
+
+        void RemoveBetween(Ellement<T> ellement)
+        {
+            ellement.Next.Prev = ellement.Prev;
+            ellement.Prev.Next = ellement.Next;
+        }
+
+        void RemoveLast(Ellement<T> ellement)
+        {
+            ellement.Prev.Next = null;
+        }
+
+        void AddEllementAtLastPosition(Ellement<T> ellement)
+        {
+            Ellement<T>? lastEllement = GetLastEllement();
+
+            if (lastEllement != null)
+            {
+                ellement.Prev = lastEllement;
+                lastEllement.Next = ellement;
+            }
+            else
+                head = ellement;
+        }
+
+        Ellement<T>? GetLastEllement()
         {
             if (IsEmpyt())
             {
@@ -107,6 +142,14 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
         bool IsEmpyt()
         {
             if (head == null)
+                return true;
+
+            return false;
+        }
+
+        bool IsTheLastEllement(Ellement<T> ellement)
+        {
+            if (ellement.Equals(GetLastEllement()))
                 return true;
 
             return false;

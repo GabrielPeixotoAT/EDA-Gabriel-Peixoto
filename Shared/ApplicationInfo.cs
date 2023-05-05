@@ -2,6 +2,6 @@
 {
     public class ApplicationInfo
     {
-        public static string Version = "1.1.2";
+        public static string Version = "1.1.3";
     }
 }

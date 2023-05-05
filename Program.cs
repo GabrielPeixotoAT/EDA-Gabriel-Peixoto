@@ -4,7 +4,7 @@ using EDA_Gabriel_Peixoto.Lista;
 using EDA_Gabriel_Peixoto.Pilha;
 
 int index = 0;
-IApplication? application = null;
+IApplication? application;
 IGUIFactory guiFactory = new SelectionMenu(new List<string> { "Stack", "List" }, 15);
 
  while (index != 2)

@@ -7,9 +7,9 @@ namespace EDA_Gabriel_Peixoto.Lista
     {
         public void Run()
         {
-            //RunGeneric();
+            RunGeneric();
 
-            IList list = new List();
+            /*IList list = new List();
 
             list.Add(new Ellement("B"));
             list.Add(new Ellement("C"));
@@ -26,18 +26,27 @@ namespace EDA_Gabriel_Peixoto.Lista
 
             list.ConsolePrintReverse();
 
-            Console.ReadKey();
+            Console.ReadKey();*/
         }
 
         public void RunGeneric()
-        {
+            {
             Generics.List<string> listGeneric = new Generics.List<string>();
 
-            listGeneric.Add(new Ellement<string>("X"));
-            listGeneric.Add(new Ellement<string>("Y"));
-            listGeneric.Add(new Ellement<string>("Z"));
+            listGeneric.Add("A");
+            listGeneric.Add("B");
+            listGeneric.Add("C");
+            listGeneric.Add("D");
+            listGeneric.Add("E");
+
+            listGeneric.Remove("E");
+            listGeneric.Remove("C");
+
+            listGeneric.Add("F");
 
             listGeneric.ConsolePrint();
+
+            Console.ReadKey();
         }
     }
 }

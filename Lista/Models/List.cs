@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EDA_Gabriel_Peixoto.Lista.Models
 {
-    public class List : IList
+    public class List //: IList
     {
         public INode? head { get; set; }
 
@@ -13,7 +13,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
         {
             head = null;
         }
-
+        /*
         public void Add(INode ellement)
         {
             if (head == null)
@@ -140,6 +140,6 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
                 }
                 Console.WriteLine();
             }
-        }
+        }*/
     }
 }

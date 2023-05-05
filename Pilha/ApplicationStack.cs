@@ -22,7 +22,7 @@ namespace EDA_Gabriel_Peixoto.Pilha
 
             do
             {
-                index = guiFactory.RenderMenu();
+                index = guiFactory.BuildMenu();
                 switch (index)
                 {
                     case 0:

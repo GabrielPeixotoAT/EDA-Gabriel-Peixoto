@@ -20,6 +20,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
     {
         void Add(T ellement);
         void Remove(T ellement);
+        INode<T>? Find(T value);
         void ConsolePrint();
     }
 }

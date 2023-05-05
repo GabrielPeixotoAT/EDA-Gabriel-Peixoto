@@ -27,6 +27,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
     {
         public T Value { get; set; }
         public Ellement<T>? Next { get; set; }
+        public Ellement<T>? Prev { get; set; }
 
         public Ellement(T value)
         {
