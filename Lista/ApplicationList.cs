@@ -44,6 +44,8 @@ namespace EDA_Gabriel_Peixoto.Lista
 
             listGeneric.Add("F");
 
+            listGeneric.Remove("C");
+
             listGeneric.ConsolePrint();
 
             Console.ReadKey();

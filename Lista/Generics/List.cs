@@ -1,4 +1,5 @@
 using EDA_Gabriel_Peixoto.Lista.Models;
+using System.Xml.Linq;
 
 namespace EDA_Gabriel_Peixoto.Lista.Generics
 {
@@ -13,37 +14,28 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
 
         public void Add(T value)
         {
-            if (value != null)
+            if (ValueIsValid(value))
             {
-                Ellement<T> ellement = new Ellement<T>(value);
-
                 if (IsEmpyt())
                 {
-                    head = ellement;
+                    AddEllementAtFirstPosition(new Ellement<T>(value));
                 }
                 else
                 {
-                    AddEllementAtLastPosition(ellement);
+                    AddEllementAtLastPosition(new Ellement<T>(value));
                 }
             }
         }
 
         public void Remove(T value)
         {
-            if(value != null)
+            if (ValueIsValid(value))
             {
                 if (!IsEmpyt())
                 {
                     Ellement<T>? ellement = Find(value) as Ellement<T>;
 
-                    if (IsTheLastEllement(ellement))
-                    {
-                        RemoveLast(ellement);
-                    }
-                    else
-                    {
-                        RemoveBetween(ellement);
-                    }
+                    RemoveEllement(ellement);
                 }
             }
         }
@@ -82,16 +74,21 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
                 else
                 {
                     Ellement<T> ellementAux = head;
+                    Ellement<T>? finded = null;
 
                     while (ellementAux.Next != null)
                     {
                         if (ellementAux.Value.Equals(value))
+                        {
+                            finded = ellementAux;
                             break;
+                        }
 
                         ellementAux = ellementAux.Next;
+                        
                     }
 
-                    return ellementAux;
+                    return finded;
                 }
             }
         }
@@ -105,6 +102,35 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
         void RemoveLast(Ellement<T> ellement)
         {
             ellement.Prev.Next = null;
+        }
+
+        void RemoveEllement(Ellement<T>? ellement)
+        {
+            if (ellement != null)
+            {
+                if (IsTheLastEllement(ellement))
+                {
+                    RemoveLast(ellement);
+                }
+                else
+                {
+                    RemoveBetween(ellement);
+                }
+            }
+        }
+
+        void AddEllementAtFirstPosition(Ellement<T> ellement)
+        {
+            if (IsEmpyt())
+            {
+                head = ellement;
+            }
+            else
+            {
+                ellement.Next = head;
+                head.Prev = ellement;
+                head = ellement;
+            }
         }
 
         void AddEllementAtLastPosition(Ellement<T> ellement)
@@ -137,6 +163,14 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
 
                 return ellementAux;
             }
+        }
+
+        bool ValueIsValid(T value)
+        {
+            if (value != null)
+                return true;
+
+            return false;
         }
 
         bool IsEmpyt()
