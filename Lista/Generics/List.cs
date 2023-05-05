@@ -48,14 +48,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
             }
             else
             {
-                Ellement<T>? ellement = head;
-
-                while (ellement != null)
-                {
-                    Console.Write(ellement.ToString());
-                    ellement = ellement.Next;
-                }
-                Console.WriteLine();
+                PrintList();
             }
         }
 
@@ -91,6 +84,18 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
                     return finded;
                 }
             }
+        }
+
+        void PrintList()
+        {
+            Ellement<T>? ellement = head;
+
+            while (ellement != null)
+            {
+                Console.Write(ellement.ToString());
+                ellement = ellement.Next;
+            }
+            Console.WriteLine();
         }
 
         void RemoveBetween(Ellement<T> ellement)
