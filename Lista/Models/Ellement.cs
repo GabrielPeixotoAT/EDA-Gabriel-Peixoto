@@ -8,8 +8,8 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
     public class Ellement : INode
     {
         public string Value { get; set; }
-        public INode? Next { get; set; }
-        public INode? Prev { get; set; }
+        public Ellement? Next { get; set; }
+        public Ellement? Prev { get; set; }
 
         public Ellement(string value)
         {
@@ -26,7 +26,7 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
     public class Ellement<T> : INode<T>
     {
         public T Value { get; set; }
-        public INode<T>? Next { get; set; }
+        public Ellement<T>? Next { get; set; }
 
         public Ellement(T value)
         {

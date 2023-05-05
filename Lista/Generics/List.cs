@@ -4,56 +4,63 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
 {
     public class List<T> : Models.IList<T>
     {
-        private INode<T>? head { get; set; }
+        private Ellement<T>? head { get; set; }
         
         public List()
         {
             head = null;
         }
 
-        public void Add(INode<T> ellement)
+        public void Add(T value)
         {
-            if (head == null)
+            if (!IsEmpyt())
             {
-                head = ellement;
-            }
-            else
-            {
-                INode<T> ellementAux = head;
+                Ellement<T> ellement = new Ellement<T>(value);
 
-                while (ellementAux.Next != null)
+                if (head == null)
                 {
-                    ellementAux = ellementAux.Next;
-                }
-
-                ellementAux.Next = ellement;
-            }
-        }
-
-        public void Remove(INode<T> ellement)
-        {
-            if(ellement == null)
-                throw new NullReferenceException();
-            
-            if (head != null)
-            {
-                if (ellement.Value.Equals(head.Value))
-                {
-                    head = head.Next;
+                    head = ellement;
                 }
                 else
                 {
-                    INode<T>? ellementAux = head.Next;
-                    INode<T> ellementAuxPrev = head;
+                    Ellement<T> ellementAux = head;
 
-                    while (ellementAux != null)
+                    while (ellementAux.Next != null)
                     {
-                        if (ellement.Value.Equals(ellementAux.Value))
-                        {
-                            ellementAuxPrev.Next = ellementAux.Next;
-                        }
-                        ellementAuxPrev = ellementAux;
                         ellementAux = ellementAux.Next;
+                    }
+
+                    ellementAux.Next = ellement;
+                }
+            }
+        }
+
+        public void Remove(T value)
+        {
+            if(value != null)
+            {
+                Ellement<T> ellement = new Ellement<T>(value);
+
+                if (!IsEmpyt())
+                {
+                    if (ellement.Equals(head.Value))
+                    {
+                        head = head.Next;
+                    }
+                    else
+                    {
+                        Ellement<T>? ellementAux = head.Next;
+                        Ellement<T> ellementAuxPrev = head;
+
+                        while (ellementAux != null)
+                        {
+                            if (ellement.Value.Equals(ellementAux.Value))
+                            {
+                                ellementAuxPrev.Next = ellementAux.Next;
+                            }
+                            ellementAuxPrev = ellementAux;
+                            ellementAux = ellementAux.Next;
+                        }
                     }
                 }
             }
@@ -61,13 +68,13 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
 
         public void ConsolePrint()
         {
-            if (head == null)
+            if (IsEmpyt())
             {
                 Console.WriteLine("Empty");
             }
             else
             {
-                INode<T>? ellement = head;
+                Ellement<T>? ellement = head;
 
                 while (ellement != null)
                 {
@@ -76,6 +83,38 @@ namespace EDA_Gabriel_Peixoto.Lista.Generics
                 }
                 Console.WriteLine();
             }
+        }
+
+        Ellement<T>? GetLastIten()
+        {
+            if (IsEmpyt())
+            {
+                return head;
+            }
+            else
+            {
+                Ellement<T> ellementAux = head;
+
+                while (ellementAux.Next != null)
+                {
+                    ellementAux = ellementAux.Next;
+                }
+
+                return ellementAux;
+            }
+        }
+
+        bool IsEmpyt()
+        {
+            if (head == null)
+                return true;
+
+            return false;
+        }
+
+        void InterateUntilTheEnd()
+        {
+
         }
     }
 }

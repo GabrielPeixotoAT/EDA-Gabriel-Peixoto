@@ -18,8 +18,8 @@ namespace EDA_Gabriel_Peixoto.Lista.Models
 
     public interface IList<T>
     {
-        void Add(INode<T> ellement);
-        void Remove(INode<T> ellement);
+        void Add(T ellement);
+        void Remove(T ellement);
         void ConsolePrint();
     }
 }
