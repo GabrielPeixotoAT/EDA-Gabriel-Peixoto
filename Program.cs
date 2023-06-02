@@ -1,11 +1,12 @@
 ﻿using EDA_Gabriel_Peixoto.Applications;
 using EDA_Gabriel_Peixoto.Applications.GUI;
+using EDA_Gabriel_Peixoto.Arvore;
 using EDA_Gabriel_Peixoto.Lista;
 using EDA_Gabriel_Peixoto.Pilha;
 
 int index = 0;
 IApplication? application;
-IGUIFactory guiFactory = new SelectionMenu(new List<string> { "Stack", "List" }, 15);
+IGUIFactory guiFactory = new SelectionMenu(new List<string> { "Stack", "List", "Tree" }, 15);
 
  while (index != 2)
  {
@@ -17,6 +18,9 @@ IGUIFactory guiFactory = new SelectionMenu(new List<string> { "Stack", "List" },
             break;
         case 1:
             application = new ApplicationList();
+            break;
+        case 2:
+            application = new ApplicationTree();
             break;
         default:
             application = null;
