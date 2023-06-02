@@ -36,8 +36,7 @@ namespace EDA_Gabriel_Peixoto.Applications.GUI
 
             do
             {
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Green;
+                NonSelectedOption();
 
                 Header();
 
@@ -71,6 +70,8 @@ namespace EDA_Gabriel_Peixoto.Applications.GUI
                         break;
                 }
             } while (aws.Key != ConsoleKey.Enter);
+            
+            NonSelectedOption();
 
             return index;
         }

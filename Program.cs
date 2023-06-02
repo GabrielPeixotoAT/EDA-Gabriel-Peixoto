@@ -6,9 +6,11 @@ using EDA_Gabriel_Peixoto.Pilha;
 
 int index = 0;
 IApplication? application;
-IGUIFactory guiFactory = new SelectionMenu(new List<string> { "Stack", "List", "Tree" }, 15);
 
- while (index != 2)
+List<string> options = new List<string> { "Stack", "List", "Tree" };
+IGUIFactory guiFactory = new SelectionMenu(options, 15);
+
+ while (index != options.Count() -1)
  {
     index = guiFactory.BuildMenu();
     switch (index)
